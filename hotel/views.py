@@ -19,7 +19,7 @@ def get_rendered_html_data(url):
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     driver.set_page_load_timeout(100)
     driver.get(url)
-    time.sleep(15)
+    time.sleep(5)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     driver.quit()
     return soup
