@@ -26,7 +26,7 @@
 </head>
 <body>
 <div id="main" class="">
-    <h1>Get hostel Data</h1>
+    <h1>Get hotel Data</h1>
     <form method="GET">
         <div class="container ">
             <div class="input-group input-group-lg form-floating mb-3">
@@ -70,9 +70,9 @@
             <p class="card-text">{{ hotel.address }}</p>
             <span class="badge bg-success">{{ hotel.score }}</span>
           </div>
-                <h1>Hotel</h1>
+                <h1>Rooms</h1>
                 {% for room in hotel.rooms %}
-                  {% if forloop.counter0|divisibleby:2 %}<div class="row">{% endif %}
+                  {% if forloop.counter|divisibleby:2 %}<div class="row">{% endif %}
                       <div class="col-sm-6">
                         <div class="card">
                           <div class="card-body">
@@ -102,7 +102,7 @@
                           </div>
                         </div>
                       </div>
-                  {% if forloop.counter0|divisibleby:2 %}</div >{% endif %}
+                  {% if forloop.counter|divisibleby:2 %}</div >{% endif %}
                 {% endfor %}
               </ul>
         </div>
