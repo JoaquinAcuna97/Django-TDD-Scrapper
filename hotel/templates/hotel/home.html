@@ -37,11 +37,13 @@
         </div>
     </form>
     {% if hotel %}
-    <div class="alert alert-success" role="alert" style="width: 30%;">
+    <div class="alert alert-success justify-content-center" role="alert" style="width: 30%;">
       Hotel found!
     </div>
     <div id="hotel" class="col d-flex justify-content-center">
         <div class="card" style="width: 60%;">
+            <h1>Hotel</h1>
+
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -68,6 +70,7 @@
             <p class="card-text">{{ hotel.address }}</p>
             <span class="badge bg-success">{{ hotel.score }}</span>
           </div>
+                <h1>Rooms</h1>
                 {% for room in hotel.rooms %}
                   <div class="row">
                       <div class="col-sm-6">

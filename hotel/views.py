@@ -12,8 +12,8 @@ from bs4 import BeautifulSoup
 
 def get_rendered_html_data(url):
     chrome_options = Options()
-    # chrome_options.headless=True
-    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+    chrome_options.headless=True
+    driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get(url)
     time.sleep(5)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
