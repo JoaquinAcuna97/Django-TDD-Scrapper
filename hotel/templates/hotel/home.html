@@ -70,9 +70,9 @@
             <p class="card-text">{{ hotel.address }}</p>
             <span class="badge bg-success">{{ hotel.score }}</span>
           </div>
-                <h1>Rooms</h1>
+                <h1>Hotel</h1>
                 {% for room in hotel.rooms %}
-                  <div class="row">
+                  {% if forloop.counter0|divisibleby:2 %}<div class="row">{% endif %}
                       <div class="col-sm-6">
                         <div class="card">
                           <div class="card-body">
@@ -102,7 +102,7 @@
                           </div>
                         </div>
                       </div>
-                  </div>
+                  {% if forloop.counter0|divisibleby:2 %}</div >{% endif %}
                 {% endfor %}
               </ul>
         </div>
