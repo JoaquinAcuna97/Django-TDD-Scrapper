@@ -14,9 +14,9 @@ class StartServer(unittest.TestCase):
 
     def test_can_start_server(self):
         self.browser.get('http://localhost:8000')
-
-        self.assertIn('successfully', self.browser.title)
+        self.assertIn('Hotel Scrapping', self.browser.title)
         #self.fail('Finish the test!')
+
 
 if __name__ == '__main__':
     unittest.main()
