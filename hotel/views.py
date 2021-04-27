@@ -21,7 +21,7 @@ def get_rendered_html_data(url):
     resp = session.get(url)
 
     # Run JavaScript code on webpage
-    resp.html.render(timeout=60)
+    resp.html.render(timeout=100)
 
     soup = BeautifulSoup(
                resp.html.html, 'html.parser')
@@ -70,7 +70,11 @@ def get_hotel_from_html_soup(url, soup):
         room_html = get_rendered_html_data(url + room_link['href'].replace('RD', 'room_'))
 
         # Tamaño de la habitación
-        room_size = room_html.find('p', attrs={'data-name-en': "roomsize"}).next_sibling.next_sibling
+        room_size = room_html.find('p', attrs={'data-name-en': "roomsize"})
+        if room_size:
+            room_size = room_size.next_sibling
+            if room_size:
+                room_size = room_size.next_sibling
         dic_room['size'] = room_size
 
         # URL de las 5 principales fotos del tipo de habitación
