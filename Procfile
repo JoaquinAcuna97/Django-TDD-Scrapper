@@ -1,1 +1,1 @@
-web: gunicorn hotel_scrapping.wsgi
+web: gunicorn hotel_scrapping.wsgi --timeout 1200
