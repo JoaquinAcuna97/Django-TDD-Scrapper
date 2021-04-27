@@ -21,10 +21,10 @@ def get_rendered_html_data(url):
     resp = session.get(url)
 
     # Run JavaScript code on webpage
-    rendered_response = resp.html.render(timeout=100)
+    resp.html.render(timeout=100)
 
     soup = BeautifulSoup(
-               rendered_response.html, 'html.parser')
+               resp.html.html, 'html.parser')
     return soup
 
 
