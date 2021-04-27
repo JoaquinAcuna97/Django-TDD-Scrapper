@@ -13,6 +13,15 @@
             text-align : center;
             padding-top: 50px;
         }
+        #hotel {
+            text-align : center;
+            padding-top: 50px;
+        }
+        .card {
+            margin: 0 auto; /* Added */
+            float: none; /* Added */
+            margin-bottom: 10px; /* Added */
+        }
     </style>
 </head>
 <body>
@@ -27,6 +36,79 @@
                 <button class="btn btn-primary btn-lg" type="submit" id="submit">Submit</button>
         </div>
     </form>
+    {% if hotel %}
+    <div id="hotel" class="col d-flex justify-content-center">
+        <div class="alert alert-success" role="alert" style="width: 30%;">
+          Hotel found!
+        </div>
+        <div class="card" style="width: 60%;">
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{{hotel.pictures.0}}" class="d-block w-100" alt="...">
+                </div>
+                  {% for image in hotel.pictures %}
+                    <div class="carousel-item">
+                      <img src="{{image}}" class="d-block w-100" alt="...">
+                    </div>
+                  {% endfor %}
+
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ hotel.name }}</h5>
+            <p class="card-text">{{ hotel.address }}</p>
+            <span class="badge bg-success">{{ hotel.score }}</span>
+          </div>
+              <ul class="list-group list-group-flush">
+                {% for room in hotel.rooms %}
+                  <div class="card" style="width: 18rem;">
+                  <div class="row">
+                      <div class="col-sm-6">
+                        <div class="card">
+                          <div class="card-body">
+                              <div id="carouselRooms" class="carousel slide" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="{{hotel.pictures.0}}" class="d-block w-100" alt="...">
+                        </div>
+                          {% for image in room.pictures %}
+                            <div class="carousel-item">
+                              <img src="{{image}}" class="d-block w-100" alt="...">
+                            </div>
+                          {% endfor %}
+
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+                            <h5 class="card-title">{{ room.name}}</h5>
+                            <p class="card-text">{{ room.size}}</p>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+
+                {% endfor %}
+              </ul>
+        </div>
+    </div>
+    {% endif %}
 </div>
 </body>
 </html>
