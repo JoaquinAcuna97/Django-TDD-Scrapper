@@ -79,14 +79,15 @@ def get_hotel_from_html_soup(url, soup):
 
         # URL de las 5 principales fotos del tipo de habitación
         room_pictures = room_html.find('div', class_='slick-track')
-        pictures_link = room_pictures.find_all_next('img', limit=5)
-        dic_room['pictures'] = []
-        for pic in pictures_link:
-            if 'src' in pic.attrs:
-                dic_room['pictures'].append(pic["src"])
-            elif 'data-lazy' in pic.attrs:
-                dic_room['pictures'].append(pic["data-lazy"])
-        hotel['rooms'].append(dic_room)
+        if room_pictures:
+            pictures_link = room_pictures.find_all_next('img', limit=5)
+            dic_room['pictures'] = []
+            for pic in pictures_link:
+                if 'src' in pic.attrs:
+                    dic_room['pictures'].append(pic["src"])
+                elif 'data-lazy' in pic.attrs:
+                    dic_room['pictures'].append(pic["data-lazy"])
+            hotel['rooms'].append(dic_room)
 
 
     # Listado completo de amenities y equipamiento de la habitación
